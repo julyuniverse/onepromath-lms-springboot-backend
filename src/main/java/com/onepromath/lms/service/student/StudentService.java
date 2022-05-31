@@ -1,6 +1,6 @@
 package com.onepromath.lms.service.student;
 
-import com.onepromath.lms.dto.student.ResponseStudentDto;
+import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
 import com.onepromath.lms.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ public class StudentService {
         this.studentMapper = studentMapper;
     }
     // 모든 학생
-    public ArrayList<ResponseStudentDto> students(int schoolInfoNo, int schoolClassNo) {
-        ArrayList<ResponseStudentDto> studentDtoArrayList = studentMapper.students(schoolInfoNo, schoolClassNo);
+    public ArrayList<ResponseWeeklyStudentDto> weeklyStudents(String startDate, String endDate, int schoolInfoNo, int schoolClassNo) {
+        ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentMapper.weeklyStudents(startDate, endDate, schoolInfoNo, schoolClassNo);
 
-        return studentDtoArrayList;
+        return responseWeeklyStudentDtoArrayList;
     }
 }

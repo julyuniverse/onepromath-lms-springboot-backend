@@ -1,4 +1,4 @@
-package com.onepromath.lms.dto.student;
+package com.onepromath.lms.dto.student.weekly;
 
 import lombok.*;
 
@@ -7,7 +7,9 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class RequestStudentDto {
+public class RequestWeeklyStudentDto {
     private int schoolInfoNo;
     private int schoolClassNo;
+    private String startDate;
+    private String endDate;
 }

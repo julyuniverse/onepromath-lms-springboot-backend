@@ -1,7 +1,7 @@
 package com.onepromath.lms.controller;
 
-import com.onepromath.lms.dto.student.RequestStudentDto;
-import com.onepromath.lms.dto.student.ResponseStudentDto;
+import com.onepromath.lms.dto.student.weekly.RequestWeeklyStudentDto;
+import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
 import com.onepromath.lms.service.student.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,11 @@ import java.util.ArrayList;
 public class StudentController { // 학생
     private final StudentService studentService;
 
-    @PostMapping("/api/student/students")
-    public ResponseEntity<ArrayList<ResponseStudentDto>> classes(@RequestBody RequestStudentDto requestStudentDto) {
-        ArrayList<ResponseStudentDto> studentDtoArrayList = studentService.students(requestStudentDto.getSchoolInfoNo(), requestStudentDto.getSchoolClassNo());
+    // 주간 모든 학생
+    @PostMapping("/api/student/weeklystudents")
+    public ResponseEntity<ArrayList<ResponseWeeklyStudentDto>> weeklyStudents(@RequestBody RequestWeeklyStudentDto requestWeeklyStudentDto) {
+        ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentService.weeklyStudents(requestWeeklyStudentDto.getStartDate(), requestWeeklyStudentDto.getEndDate(), requestWeeklyStudentDto.getSchoolInfoNo(), requestWeeklyStudentDto.getSchoolClassNo());
 
-        return ResponseEntity.ok().body(studentDtoArrayList);
+        return ResponseEntity.ok().body(responseWeeklyStudentDtoArrayList);
     }
 }

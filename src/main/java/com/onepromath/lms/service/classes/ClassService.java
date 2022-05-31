@@ -15,7 +15,7 @@ public class ClassService {
     }
 
     public ArrayList<ResponseClassDto> classes(int schoolInfoNo, int schoolYear) {
-        ArrayList<ResponseClassDto> classDtoArrayList = null;
+        ArrayList<ResponseClassDto> classDtoArrayList;
         if (schoolYear == 0) {
             classDtoArrayList = classMapper.classes2(schoolInfoNo);
         } else if (schoolYear == 7) {
