@@ -8,6 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class ResponseWeeklyStudentDto {
+    private int sequence; // 순번
     private int studentNo; // 학생 번호
     private String studentName; // 학생 이름
     private int learningTimeSeconds; // 학습 시간 (초)

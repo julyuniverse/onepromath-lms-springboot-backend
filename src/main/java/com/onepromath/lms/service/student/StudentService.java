@@ -1,5 +1,7 @@
 package com.onepromath.lms.service.student;
 
+import com.onepromath.lms.dto.student.average.RequestAverageStudentDto;
+import com.onepromath.lms.dto.student.average.ResponseAverageStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
 import com.onepromath.lms.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,56 @@ public class StudentService {
     public StudentService(StudentMapper studentMapper) {
         this.studentMapper = studentMapper;
     }
-    // 모든 학생
-    public ArrayList<ResponseWeeklyStudentDto> weeklyStudents(String startDate, String endDate, int schoolInfoNo, int schoolClassNo) {
-        ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentMapper.weeklyStudents(startDate, endDate, schoolInfoNo, schoolClassNo);
+
+    // 주간 모든 학생
+    public ArrayList<ResponseWeeklyStudentDto> weeklyStudents(int schoolInfoNo, int schoolClassNo, String startDate, String endDate, int sort, boolean order) {
+        String s;
+        String o;
+
+        if (sort == 1) { // 학생 이름
+            s = "student_name";
+        } else if (sort == 2) { // 학습량
+            s = "learning_count";
+        } else {
+            s = "student_name";
+        }
+
+        if (order) {
+            o = "asc";
+        } else {
+            o = "desc";
+        }
+
+        ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentMapper.weeklyStudents(schoolInfoNo, schoolClassNo, startDate, endDate, s, o);
 
         return responseWeeklyStudentDtoArrayList;
+    }
+
+    // 평균 모든 학생
+    public ArrayList<ResponseAverageStudentDto> averageStudents(int schoolInfoNo, int schoolClassNo, String startDate, String endDate, int sort, boolean order) {
+        String s;
+        String o;
+
+        if (sort == 1) { // 학생 이름
+            s = "student_name";
+        } else if (sort == 2) { // 학습량
+            s = "learning_count";
+        } else if (sort == 3) { // 정확도
+            s = "accuracy";
+        } else if (sort == 4) { // 학습시간
+            s = "learning_time_seconds";
+        } else {
+            s = "student_name";
+        }
+
+        if (order) {
+            o = "asc";
+        } else {
+            o = "desc";
+        }
+
+        ArrayList<ResponseAverageStudentDto> requestAverageStudentDtoArrayList = studentMapper.averageStudents(schoolInfoNo, schoolClassNo, startDate, endDate, s, o);
+
+        return requestAverageStudentDtoArrayList;
     }
 }

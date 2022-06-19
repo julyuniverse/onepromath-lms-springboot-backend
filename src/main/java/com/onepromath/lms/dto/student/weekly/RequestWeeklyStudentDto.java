@@ -12,4 +12,6 @@ public class RequestWeeklyStudentDto {
     private int schoolClassNo;
     private String startDate;
     private String endDate;
+    private int sort;
+    private boolean order;
 }

@@ -1,6 +1,7 @@
 package com.onepromath.lms.service.classes;
 
-import com.onepromath.lms.dto.classes.ResponseClassDto;
+import com.onepromath.lms.dto.classes.averageclass.ResponseAverageClassDto;
+import com.onepromath.lms.dto.classes.classes.ResponseClassDto;
 import com.onepromath.lms.mapper.ClassMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,10 @@ public class ClassService {
         this.classMapper = classMapper;
     }
 
+    // 반 목록
     public ArrayList<ResponseClassDto> classes(int schoolInfoNo, int schoolYear) {
         ArrayList<ResponseClassDto> classDtoArrayList;
-        if (schoolYear == 0) {
+        if (schoolYear == 999) {
             classDtoArrayList = classMapper.classes2(schoolInfoNo);
         } else if (schoolYear == 7) {
             classDtoArrayList = classMapper.classes3(schoolInfoNo);
@@ -24,5 +26,12 @@ public class ClassService {
             classDtoArrayList = classMapper.classes(schoolInfoNo, schoolYear);
         }
         return classDtoArrayList;
+    }
+
+    // 평균 반
+    public ResponseAverageClassDto averageClass(int schoolInfoNo, int schoolClassNo, String startDate, String endDate) {
+        ResponseAverageClassDto responseAverageClassDto = classMapper.averageClass(schoolInfoNo, schoolClassNo, startDate, endDate);
+
+        return responseAverageClassDto;
     }
 }

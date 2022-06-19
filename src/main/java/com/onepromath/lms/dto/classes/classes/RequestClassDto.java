@@ -1,4 +1,4 @@
-package com.onepromath.lms.dto.classes;
+package com.onepromath.lms.dto.classes.classes;
 
 import lombok.*;
 

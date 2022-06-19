@@ -1,7 +1,9 @@
 package com.onepromath.lms.controller;
 
-import com.onepromath.lms.dto.classes.RequestClassDto;
-import com.onepromath.lms.dto.classes.ResponseClassDto;
+import com.onepromath.lms.dto.classes.averageclass.RequestAverageClassDto;
+import com.onepromath.lms.dto.classes.averageclass.ResponseAverageClassDto;
+import com.onepromath.lms.dto.classes.classes.RequestClassDto;
+import com.onepromath.lms.dto.classes.classes.ResponseClassDto;
 import com.onepromath.lms.service.classes.ClassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +18,17 @@ import java.util.ArrayList;
 public class ClassController { // 학급
     private final ClassService classService;
 
-    @PostMapping("/api/class")
+    @PostMapping("/api/class/class")
     public ResponseEntity<ArrayList<ResponseClassDto>> classes(@RequestBody RequestClassDto requestClassDto) {
         ArrayList<ResponseClassDto> classDtoArrayList = classService.classes(requestClassDto.getSchoolInfoNo(), requestClassDto.getSchoolYear());
 
         return ResponseEntity.ok().body(classDtoArrayList);
+    }
+
+    @PostMapping("/api/class/averageclass")
+    public ResponseEntity<ResponseAverageClassDto> averageClass(@RequestBody RequestAverageClassDto requestAverageClassDto) {
+        ResponseAverageClassDto responseAverageClassDto = classService.averageClass(requestAverageClassDto.getSchoolInfoNo(), requestAverageClassDto.getSchoolClassNo(), requestAverageClassDto.getStartDate(), requestAverageClassDto.getEndDate());
+
+        return ResponseEntity.ok().body(responseAverageClassDto);
     }
 }
