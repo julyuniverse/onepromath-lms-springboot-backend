@@ -7,6 +7,7 @@ import com.onepromath.lms.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 @Service
 public class StudentService {
@@ -36,6 +37,12 @@ public class StudentService {
         }
 
         ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentMapper.weeklyStudents(schoolInfoNo, schoolClassNo, startDate, endDate, s, o);
+
+        for (ResponseWeeklyStudentDto responseWeeklyStudentDto : responseWeeklyStudentDtoArrayList) {
+            responseWeeklyStudentDto.setLevel(
+                    studentMapper.weeklyStudentLevel(responseWeeklyStudentDto.getStudentNo(), startDate, endDate)
+            );
+        }
 
         return responseWeeklyStudentDtoArrayList;
     }

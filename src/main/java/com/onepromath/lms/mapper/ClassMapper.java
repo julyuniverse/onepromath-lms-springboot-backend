@@ -9,22 +9,39 @@ import java.util.ArrayList;
 @Mapper
 public interface ClassMapper {
     // 반 목록
-    @Select("select NO school_class_no, name class_name\n" +
+    @Select("select NO                   as school_class_no,\n" +
+            "       name                 as class_name,\n" +
+            "       (select count(*)\n" +
+            "        from LOGIN_ID\n" +
+            "        where SCHOOL_INFO_NO = #{schoolInfoNo}\n" +
+            "          and SCHOOL_CLASS_NO = SCHOOL_CLASS.NO\n" +
+            "          and school_id_yn = 'y'\n" +
+            "          and use_yn = 'y') as student_count\n" +
             "from SCHOOL_CLASS\n" +
             "where school_no = #{schoolInfoNo}\n" +
             "  and year = #{schoolYear}\n" +
-            "  and use_yn = 'y';")
+            "  and use_yn = 'y'\n" +
+            "order by class_name;")
     @Results(id = "class", value = {
             @Result(property = "schoolClassNo", column = "school_class_no"),
-            @Result(property = "className", column = "class_name")
+            @Result(property = "className", column = "class_name"),
+            @Result(property = "studentCount", column = "student_count")
     })
     ArrayList<ResponseClassDto> classes(@Param("schoolInfoNo") int schoolInfoNo, @Param("schoolYear") int schoolYear);
 
     // 반 목록
-    @Select("select NO school_class_no, name class_name\n" +
+    @Select("select NO                   as school_class_no,\n" +
+            "       name                 as class_name,\n" +
+            "       (select count(*)\n" +
+            "        from LOGIN_ID\n" +
+            "        where SCHOOL_INFO_NO = #{schoolInfoNo}\n" +
+            "          and SCHOOL_CLASS_NO = SCHOOL_CLASS.NO\n" +
+            "          and school_id_yn = 'y'\n" +
+            "          and use_yn = 'y') as student_count\n" +
             "from SCHOOL_CLASS\n" +
             "where school_no = #{schoolInfoNo}\n" +
-            "  and use_yn = 'y';")
+            "  and use_yn = 'y'\n" +
+            "order by class_name;\n")
     @ResultMap("class")
     ArrayList<ResponseClassDto> classes2(@Param("schoolInfoNo") int schoolInfoNo);
 
@@ -47,8 +64,8 @@ public interface ClassMapper {
             "                                                         and li.SCHOOL_CLASS_NO = #{schoolClassNo}\n" +
             "                                                         and li.school_id_yn = 'y'\n" +
             "                                                         and li.use_yn = 'y'\n" +
-            "                                                         and lip.use_yn = 'y'), 1), 0) as learning_count,\n" +
-            "       ifnull(sum(learning_data.right_cnt) / sum(learning_data.solve_cnt) * 100, 0)    as accuracy,\n" +
+            "                                                         and lip.use_yn = 'y'), 1), 0)        as learning_count,\n" +
+            "       ifnull(round(sum(learning_data.right_cnt) / sum(learning_data.solve_cnt) * 100, 1), 0) as accuracy,\n" +
             "       ifnull(round(sum(learning_data.time) / (select count(*) cnt\n" +
             "                                               from LOGIN_ID li\n" +
             "                                                        left join LOGIN_ID_PROFILE lip on li.NO = lip.LOGIN_ID_NO\n" +
@@ -56,7 +73,7 @@ public interface ClassMapper {
             "                                                 and li.SCHOOL_CLASS_NO = #{schoolClassNo}\n" +
             "                                                 and li.school_id_yn = 'y'\n" +
             "                                                 and li.use_yn = 'y'\n" +
-            "                                                 and lip.use_yn = 'y')), 0)            as learning_time_seconds\n" +
+            "                                                 and lip.use_yn = 'y')), 0)                   as learning_time_seconds\n" +
             "from (select LOGIN_ID_PROFILE_NO student_no, solve_cnt, right_cnt, time\n" +
             "      from RESULT_DAILY_2\n" +
             "      where LOGIN_ID_PROFILE_NO in (select lip.NO\n" +

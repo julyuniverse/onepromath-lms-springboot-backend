@@ -10,4 +10,5 @@ import lombok.*;
 public class ResponseClassDto {
     private int schoolClassNo;
     private String className;
+    private int studentCount;
 }

@@ -2,6 +2,8 @@ package com.onepromath.lms.dto.student.weekly;
 
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
@@ -21,4 +23,5 @@ public class ResponseWeeklyStudentDto {
     private int fridayLearningCount; // 금요일 학습량 (개수)
     private int saturdayLearningCount; // 토요일 학습량 (개수)
     private int sundayLearningCount; // 일요일 학습량 (개수)
+    private List<ResponseWeeklyStudentLevelDto> level; // 레벨, 챕터, 학습량
 }
