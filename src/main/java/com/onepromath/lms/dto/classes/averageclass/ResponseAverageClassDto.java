@@ -2,7 +2,7 @@ package com.onepromath.lms.dto.classes.averageclass;
 
 import lombok.*;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter

@@ -5,11 +5,13 @@ import com.onepromath.lms.dto.student.average.ResponseAverageStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
 import com.onepromath.lms.mapper.StudentMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 @Service
+@Transactional
 public class StudentService {
     private final StudentMapper studentMapper;
 

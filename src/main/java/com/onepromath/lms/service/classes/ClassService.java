@@ -4,10 +4,12 @@ import com.onepromath.lms.dto.classes.averageclass.ResponseAverageClassDto;
 import com.onepromath.lms.dto.classes.classes.ResponseClassDto;
 import com.onepromath.lms.mapper.ClassMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
 @Service
+@Transactional
 public class ClassService {
     private final ClassMapper classMapper;
 
