@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class ClassController { // 학급
     private final ClassService classService;
 
+    // 반 목록
     @PostMapping("/api/class/class")
     public ResponseEntity<ArrayList<ResponseClassDto>> classes(@RequestBody RequestClassDto requestClassDto) {
         ArrayList<ResponseClassDto> classDtoArrayList = classService.classes(requestClassDto.getSchoolInfoNo(), requestClassDto.getSchoolYear());
@@ -25,7 +26,8 @@ public class ClassController { // 학급
         return ResponseEntity.ok().body(classDtoArrayList);
     }
 
-    @PostMapping("/api/class/averageclass")
+    // 평균 반
+    @PostMapping("/api/class/average-class")
     public ResponseEntity<ResponseAverageClassDto> averageClass(@RequestBody RequestAverageClassDto requestAverageClassDto) {
         ResponseAverageClassDto responseAverageClassDto = classService.averageClass(requestAverageClassDto.getSchoolInfoNo(), requestAverageClassDto.getSchoolClassNo(), requestAverageClassDto.getStartDate(), requestAverageClassDto.getEndDate());
 

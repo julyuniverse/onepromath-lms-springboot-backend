@@ -19,7 +19,7 @@ public class StudentController { // 학생
     private final StudentService studentService;
 
     // 주간 모든 학생
-    @PostMapping("/api/student/weeklystudents")
+    @PostMapping("/api/student/weekly-students")
     public ResponseEntity<ArrayList<ResponseWeeklyStudentDto>> weeklyStudents(@RequestBody RequestWeeklyStudentDto requestWeeklyStudentDto) {
         ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentService.weeklyStudents(requestWeeklyStudentDto.getSchoolInfoNo(), requestWeeklyStudentDto.getSchoolClassNo(), requestWeeklyStudentDto.getStartDate(), requestWeeklyStudentDto.getEndDate(), requestWeeklyStudentDto.getSort(), requestWeeklyStudentDto.isOrder());
 
@@ -27,7 +27,7 @@ public class StudentController { // 학생
     }
 
     // 평균 모든 학생
-    @PostMapping("/api/student/averagestudents")
+    @PostMapping("/api/student/average-students")
     public ResponseEntity<ArrayList<ResponseAverageStudentDto>> averageStudents(@RequestBody RequestAverageStudentDto requestAverageStudentDto) {
         ArrayList<ResponseAverageStudentDto> responseAverageStudentDtoArrayList = studentService.averageStudents(requestAverageStudentDto.getSchoolInfoNo(), requestAverageStudentDto.getSchoolClassNo(), requestAverageStudentDto.getStartDate(), requestAverageStudentDto.getEndDate(), requestAverageStudentDto.getSort(), requestAverageStudentDto.isOrder());
 
