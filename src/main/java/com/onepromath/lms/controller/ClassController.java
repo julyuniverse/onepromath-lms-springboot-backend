@@ -4,7 +4,7 @@ import com.onepromath.lms.dto.classes.averageclass.RequestAverageClassDto;
 import com.onepromath.lms.dto.classes.averageclass.ResponseAverageClassDto;
 import com.onepromath.lms.dto.classes.classes.RequestClassDto;
 import com.onepromath.lms.dto.classes.classes.ResponseClassDto;
-import com.onepromath.lms.service.classes.ClassService;
+import com.onepromath.lms.service.ClassService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

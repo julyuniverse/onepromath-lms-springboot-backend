@@ -1,4 +1,4 @@
-package com.onepromath.lms.service.attendance;
+package com.onepromath.lms.service;
 
 import com.onepromath.lms.dto.attendance.ResponseAttendanceCalendarDto;
 import com.onepromath.lms.dto.attendance.ResponseAttendanceWeekDto;

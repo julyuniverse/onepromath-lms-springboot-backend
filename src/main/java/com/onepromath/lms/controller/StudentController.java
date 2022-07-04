@@ -1,10 +1,12 @@
 package com.onepromath.lms.controller;
 
+import com.onepromath.lms.dto.student.RequestStudentDto;
+import com.onepromath.lms.dto.student.ResponseStudentDto;
 import com.onepromath.lms.dto.student.average.RequestAverageStudentDto;
 import com.onepromath.lms.dto.student.average.ResponseAverageStudentDto;
 import com.onepromath.lms.dto.student.weekly.RequestWeeklyStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
-import com.onepromath.lms.service.student.StudentService;
+import com.onepromath.lms.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,5 +34,13 @@ public class StudentController { // 학생
         ArrayList<ResponseAverageStudentDto> responseAverageStudentDtoArrayList = studentService.averageStudents(requestAverageStudentDto.getSchoolInfoNo(), requestAverageStudentDto.getSchoolClassNo(), requestAverageStudentDto.getStartDate(), requestAverageStudentDto.getEndDate(), requestAverageStudentDto.getSort(), requestAverageStudentDto.isOrder());
 
         return ResponseEntity.ok().body(responseAverageStudentDtoArrayList);
+    }
+
+    // 모든 학생
+    @PostMapping("/api/student/students")
+    public ResponseEntity<ArrayList<ResponseStudentDto>> students(@RequestBody RequestStudentDto requestStudentDto) {
+        ArrayList<ResponseStudentDto> students = studentService.students(requestStudentDto.getSchoolNo(), requestStudentDto.getClassNo());
+
+        return ResponseEntity.ok().body(students);
     }
 }

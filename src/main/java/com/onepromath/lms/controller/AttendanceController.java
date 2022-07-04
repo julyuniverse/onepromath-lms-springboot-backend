@@ -4,12 +4,11 @@ import com.onepromath.lms.dto.attendance.RequestAttendanceCalendarDto;
 import com.onepromath.lms.dto.attendance.RequestAttendanceWeekDto;
 import com.onepromath.lms.dto.attendance.ResponseAttendanceCalendarDto;
 import com.onepromath.lms.dto.attendance.ResponseAttendanceWeekDto;
-import com.onepromath.lms.service.attendance.AttendanceService;
+import com.onepromath.lms.service.AttendanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;

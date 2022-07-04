@@ -1,5 +1,6 @@
-package com.onepromath.lms.service.student;
+package com.onepromath.lms.service;
 
+import com.onepromath.lms.dto.student.ResponseStudentDto;
 import com.onepromath.lms.dto.student.average.RequestAverageStudentDto;
 import com.onepromath.lms.dto.student.average.ResponseAverageStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
@@ -75,5 +76,12 @@ public class StudentService {
         ArrayList<ResponseAverageStudentDto> requestAverageStudentDtoArrayList = studentMapper.averageStudents(schoolInfoNo, schoolClassNo, startDate, endDate, s, o);
 
         return requestAverageStudentDtoArrayList;
+    }
+
+    // 모든 학생
+    public ArrayList<ResponseStudentDto> students(int schoolNo, int classNo) {
+        ArrayList<ResponseStudentDto> students = studentMapper.students(schoolNo, classNo);
+
+        return students;
     }
 }

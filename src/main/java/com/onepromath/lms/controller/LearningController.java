@@ -14,7 +14,7 @@ import com.onepromath.lms.dto.learning.data.week.RequestLastWeekAndThisWeekLearn
 import com.onepromath.lms.dto.learning.data.week.RequestWeeklyLearningDataDto;
 import com.onepromath.lms.dto.learning.data.week.ResponseLastWeekAndThisWeekLearningDataDto;
 import com.onepromath.lms.dto.learning.data.week.ResponseWeeklyLearningDataDto;
-import com.onepromath.lms.service.learning.LearningService;
+import com.onepromath.lms.service.LearningService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

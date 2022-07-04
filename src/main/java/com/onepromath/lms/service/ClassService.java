@@ -1,4 +1,4 @@
-package com.onepromath.lms.service.classes;
+package com.onepromath.lms.service;
 
 import com.onepromath.lms.dto.classes.averageclass.ResponseAverageClassDto;
 import com.onepromath.lms.dto.classes.classes.ResponseClassDto;

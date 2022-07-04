@@ -1,4 +1,4 @@
-package com.onepromath.lms.service.learning;
+package com.onepromath.lms.service;
 
 import com.onepromath.lms.dto.learning.data.ResponseLearningDataDto;
 import com.onepromath.lms.dto.learning.data.day.DayLearningDataDto;

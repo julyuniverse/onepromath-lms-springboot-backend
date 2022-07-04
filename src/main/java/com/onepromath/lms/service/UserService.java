@@ -1,4 +1,4 @@
-package com.onepromath.lms.service.user;
+package com.onepromath.lms.service;
 
 import com.onepromath.lms.dto.user.login.ResponseUserLoginDto;
 import com.onepromath.lms.mapper.UserMapper;

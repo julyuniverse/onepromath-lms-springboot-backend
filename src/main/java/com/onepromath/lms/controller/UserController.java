@@ -2,7 +2,7 @@ package com.onepromath.lms.controller;
 
 import com.onepromath.lms.dto.user.login.RequestUserLoginDto;
 import com.onepromath.lms.dto.user.login.ResponseUserLoginDto;
-import com.onepromath.lms.service.user.UserService;
+import com.onepromath.lms.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

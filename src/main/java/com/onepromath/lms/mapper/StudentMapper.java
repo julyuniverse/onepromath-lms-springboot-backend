@@ -1,5 +1,6 @@
 package com.onepromath.lms.mapper;
 
+import com.onepromath.lms.dto.student.ResponseStudentDto;
 import com.onepromath.lms.dto.student.average.ResponseAverageStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentDto;
 import com.onepromath.lms.dto.student.weekly.ResponseWeeklyStudentLevelDto;
@@ -357,4 +358,19 @@ public interface StudentMapper {
             @Result(property = "learningTimeSeconds", column = "learning_time_seconds")
     })
     ArrayList<ResponseAverageStudentDto> averageStudents(@Param("schoolInfoNo") int schoolInfoNo, @Param("schoolClassNo") int schoolClassNo, @Param("startDate") String startDate, @Param("endDate") String endDate, @Param("sort") String sort, @Param("order") String order);
+
+    // 모든 학생
+    @Select("select lip.NO as student_no, lip.name student_name\n" +
+            "from LOGIN_ID li\n" +
+            "         left join LOGIN_ID_PROFILE lip on li.NO = lip.LOGIN_ID_NO\n" +
+            "where li.use_yn = 'y'\n" +
+            "  and li.school_id_yn = 'y'\n" +
+            "  and li.SCHOOL_INFO_NO = #{schoolNo}\n" +
+            "  and li.SCHOOL_CLASS_NO = #{classNo}\n" +
+            "order by li.name;")
+    @Results(id = "students", value = {
+            @Result(property = "studentNo", column = "student_no"),
+            @Result(property = "studentName", column = "student_name")
+    })
+    ArrayList<ResponseStudentDto> students(@Param("schoolNo") int schoolNo, @Param("classNo") int classNo);
 }
