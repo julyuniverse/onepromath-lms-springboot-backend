@@ -11,17 +11,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/lms-backend")
 public class StudentController { // 학생
     private final StudentService studentService;
 
     // 주간 모든 학생
-    @PostMapping("/api/student/weekly-students")
+    @PostMapping("/student/weekly-students")
     public ResponseEntity<ArrayList<ResponseWeeklyStudentDto>> weeklyStudents(@RequestBody RequestWeeklyStudentDto requestWeeklyStudentDto) {
         ArrayList<ResponseWeeklyStudentDto> responseWeeklyStudentDtoArrayList = studentService.weeklyStudents(requestWeeklyStudentDto.getSchoolInfoNo(), requestWeeklyStudentDto.getSchoolClassNo(), requestWeeklyStudentDto.getStartDate(), requestWeeklyStudentDto.getEndDate(), requestWeeklyStudentDto.getSort(), requestWeeklyStudentDto.isOrder());
 
@@ -29,7 +31,7 @@ public class StudentController { // 학생
     }
 
     // 평균 모든 학생
-    @PostMapping("/api/student/average-students")
+    @PostMapping("/student/average-students")
     public ResponseEntity<ArrayList<ResponseAverageStudentDto>> averageStudents(@RequestBody RequestAverageStudentDto requestAverageStudentDto) {
         ArrayList<ResponseAverageStudentDto> responseAverageStudentDtoArrayList = studentService.averageStudents(requestAverageStudentDto.getSchoolInfoNo(), requestAverageStudentDto.getSchoolClassNo(), requestAverageStudentDto.getStartDate(), requestAverageStudentDto.getEndDate(), requestAverageStudentDto.getSort(), requestAverageStudentDto.isOrder());
 
@@ -37,7 +39,7 @@ public class StudentController { // 학생
     }
 
     // 모든 학생
-    @PostMapping("/api/student/students")
+    @PostMapping("/student/students")
     public ResponseEntity<ArrayList<ResponseStudentDto>> students(@RequestBody RequestStudentDto requestStudentDto) {
         ArrayList<ResponseStudentDto> students = studentService.students(requestStudentDto.getSchoolNo(), requestStudentDto.getClassNo());
 

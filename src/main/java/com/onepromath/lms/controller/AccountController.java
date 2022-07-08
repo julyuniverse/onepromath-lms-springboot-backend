@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/lms-backend")
 public class AccountController {
     private final AccountService accountService;
 
     // 계정 정보
-    @PostMapping("/api/account/info")
+    @PostMapping("/account/info")
     public ResponseEntity<ResponseAccountInfoDto> accountInfo(@RequestBody RequestAccountInfoDto requestAccountInfoDto) {
         ResponseAccountInfoDto responseAccountInfoDto = accountService.accountInfo(requestAccountInfoDto.getUserNo());
 
@@ -26,7 +27,7 @@ public class AccountController {
     }
 
     // 계정 정보2
-    @PostMapping("/api/account/info2")
+    @PostMapping("/account/info2")
     public ResponseEntity<ResponseAccountInfoDto> accountInfo2(@RequestBody RequestAccountInfoDto requestAccountInfoDto) {
         ResponseAccountInfoDto responseAccountInfoDto = accountService.accountInfo2(requestAccountInfoDto.getProfileNo());
 

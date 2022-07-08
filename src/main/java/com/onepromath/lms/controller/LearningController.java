@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
@@ -31,11 +32,12 @@ import java.util.ArrayList;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/lms-backend")
 public class LearningController { // 학습
     private final LearningService learningService;
 
     // 월별 학습 데이터
-    @PostMapping("/api/learning/monthly-learning-data")
+    @PostMapping("/learning/monthly-learning-data")
     public ResponseEntity<ArrayList<ResponseMonthlyLearningDataDto>> monthlyLearningData(@RequestBody RequestMonthlyLearningDataDto requestMonthlyLearningDataDto) throws ParseException {
         ArrayList<ResponseMonthlyLearningDataDto> responseMonthlyLearningDataDtoArrayList = learningService.monthlyLearningData(requestMonthlyLearningDataDto.getStudentNo(), requestMonthlyLearningDataDto.getStartDate(), requestMonthlyLearningDataDto.getCount());
 
@@ -43,7 +45,7 @@ public class LearningController { // 학습
     }
 
     // 주별 학습 데이터
-    @PostMapping("/api/learning/weekly-learning-data")
+    @PostMapping("/learning/weekly-learning-data")
     public ResponseEntity<ArrayList<ResponseWeeklyLearningDataDto>> weeklyLearningData(@RequestBody RequestWeeklyLearningDataDto requestWeeklyLearningDataDto) throws ParseException {
         ArrayList<ResponseWeeklyLearningDataDto> responseWeeklyLearningDataDtoArrayList = learningService.weeklyLearningData(requestWeeklyLearningDataDto.getStudentNo(), requestWeeklyLearningDataDto.getStartDate());
 
@@ -51,7 +53,7 @@ public class LearningController { // 학습
     }
 
     // 레벨 데이터
-    @PostMapping("/api/learning/level-data")
+    @PostMapping("/learning/level-data")
     public ResponseEntity<ArrayList<ResponseLevelDataDto>> levelData(@RequestBody RequestLevelDataDto requestLevelDataDto) {
         ArrayList<ResponseLevelDataDto> responseLevelDataDtoArrayList = learningService.levelData(requestLevelDataDto.getStudentNo(), requestLevelDataDto.getStartDate(), requestLevelDataDto.getEndDate());
 
@@ -59,7 +61,7 @@ public class LearningController { // 학습
     }
 
     // 레벨과 챕터 데이터
-    @PostMapping("/api/learning/level-and-chapter-data")
+    @PostMapping("/learning/level-and-chapter-data")
     public ResponseEntity<ArrayList<ResponseLevelAndChapterDataDto>> levelAndChapterData(@RequestBody RequestLevelAndChapterDataDto requestLevelAndChapterDataDto) {
         ArrayList<ResponseLevelAndChapterDataDto> responseLevelAndChapterDataDtoArrayList = learningService.levelAndChapterData(requestLevelAndChapterDataDto.getStudentNo(), requestLevelAndChapterDataDto.getStartDate(), requestLevelAndChapterDataDto.getEndDate());
 
@@ -67,7 +69,7 @@ public class LearningController { // 학습
     }
 
     // 학습 데이터
-    @PostMapping("/api/learning/learning-data")
+    @PostMapping("/learning/learning-data")
     public ResponseEntity<ArrayList<ResponseLearningDataDto>> learningData(@RequestBody RequestLearningDataDto requestLearningDataDto) {
         ArrayList<ResponseLearningDataDto> responseLearningDataDtoArrayList = learningService.learningData(requestLearningDataDto.getStudentNo(), requestLearningDataDto.getStartDate(), requestLearningDataDto.getEndDate());
 
@@ -75,7 +77,7 @@ public class LearningController { // 학습
     }
 
     // 지난 주와 이번 주 학습 데이터
-    @PostMapping("/api/learning/last-week-and-this-week-learning-data")
+    @PostMapping("/learning/last-week-and-this-week-learning-data")
     public ResponseEntity<ArrayList<ResponseLastWeekAndThisWeekLearningDataDto>> lastWeekAndThisWeekLearningData(@RequestBody RequestLastWeekAndThisWeekLearningDataDto requestLastWeekAndThisWeekLearningDataDto) throws ParseException {
         ArrayList<ResponseLastWeekAndThisWeekLearningDataDto> learningData = learningService.lastWeekAndThisWeekLearningData(requestLastWeekAndThisWeekLearningDataDto.getStudentNo(), requestLastWeekAndThisWeekLearningDataDto.getStartDate());
 
@@ -83,7 +85,7 @@ public class LearningController { // 학습
     }
 
     // 일별 학습 데이터
-    @PostMapping("/api/learning/daily-learning-data")
+    @PostMapping("/learning/daily-learning-data")
     public ResponseEntity<ArrayList<DayLearningDataDto>> dailyLearningData(@RequestBody RequestDailyLearningDataDto requestDailyLearningDataDto) {
         ArrayList<DayLearningDataDto> dailyLearningData = learningService.dailyLearningData(requestDailyLearningDataDto.getStudentNo(), requestDailyLearningDataDto.getStartDate(), requestDailyLearningDataDto.getEndDate());
 

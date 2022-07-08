@@ -2,7 +2,7 @@
 
 > 일프로연산-일프로선생님(LMS)
 > 
->  Springboot Backend
+> Springboot Backend
 
 ## 프로젝트 형태
 - Project: Maven Project

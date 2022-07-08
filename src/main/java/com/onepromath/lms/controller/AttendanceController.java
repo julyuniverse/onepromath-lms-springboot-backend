@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
@@ -16,11 +17,12 @@ import java.util.ArrayList;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/lms-backend")
 public class AttendanceController { // 출석
     private final AttendanceService attendanceService;
 
     // 달력 (출석, 학습 데이터)
-    @PostMapping("/api/attendance/calendar")
+    @PostMapping("/attendance/calendar")
     public ResponseEntity<ArrayList<ArrayList<ResponseAttendanceCalendarDto>>> calendar(@RequestBody RequestAttendanceCalendarDto requestAttendanceCalendarDto) throws ParseException {
         ArrayList<ArrayList<ResponseAttendanceCalendarDto>> responseCalendarDtoArrayList = attendanceService.calendar(requestAttendanceCalendarDto.getStudentNo(), requestAttendanceCalendarDto.getStartDate());
 
@@ -28,7 +30,7 @@ public class AttendanceController { // 출석
     }
 
     // 주간 (출석, 학습 데이터)
-    @PostMapping("/api/attendance/week")
+    @PostMapping("/attendance/week")
     public ResponseEntity<ArrayList<ResponseAttendanceWeekDto>> week(@RequestBody RequestAttendanceWeekDto requestAttendanceWeekDto) throws ParseException {
         ArrayList<ResponseAttendanceWeekDto> responseAttendanceWeekDtoArrayList = attendanceService.week(requestAttendanceWeekDto.getStudentNo(), requestAttendanceWeekDto.getStartDate());
 
