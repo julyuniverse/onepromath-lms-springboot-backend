@@ -233,7 +233,6 @@ public class LearningService {
         calendar.setTime(date);
         calendar.add(Calendar.DATE, 14);
         String endDate = format.format(calendar.getTime());
-        System.out.println(endDate);
 
         ArrayList<DayLearningDataDto> dayLearningDataDtoArrayList = learningMapper.dailyLearningData(studentNo, startDate, endDate);
         ArrayList<ResponseLastWeekAndThisWeekLearningDataDto> learningData = new ArrayList<>();
